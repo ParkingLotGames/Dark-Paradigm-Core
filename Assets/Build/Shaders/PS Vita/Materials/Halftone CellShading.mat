@@ -1,0 +1,139 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Halftone CellShading
+  m_Shader: {fileID: 4800000, guid: d751eb07cd2cea64582f37492cd40a99, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _DissolvePattern:
+        m_Texture: {fileID: 2800000, guid: 28c7aad1372ff114b90d330f8a2dd938, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DissolveRamp:
+        m_Texture: {fileID: 2800000, guid: 9de63461b14894746b8ecb18bf738469, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTexture:
+        m_Texture: {fileID: 2800000, guid: 4ea9cf7e241aee247a35e7d7a2a2edc2, type: 3}
+        m_Scale: {x: 2, y: 2}
+        m_Offset: {x: 0, y: 0}
+    - _MainTextureRGBA:
+        m_Texture: {fileID: 2800000, guid: c2ef94ff9d11915d1100a04b44295342, type: 3}
+        m_Scale: {x: 10, y: 10}
+        m_Offset: {x: 0, y: 0}
+    - _MainTexture_copy:
+        m_Texture: {fileID: 2800000, guid: 871dbf90c5fde43f2b50711f4f745889, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Noise:
+        m_Texture: {fileID: 2800000, guid: 871dbf90c5fde43f2b50711f4f745889, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Noise_copy:
+        m_Texture: {fileID: 2800000, guid: 662cb42ead515cd4489be28b9d392527, type: 3}
+        m_Scale: {x: 4, y: 4}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: a53cf5449d11a15d1100a04b44295342, type: 3}
+        m_Scale: {x: 4, y: 4}
+        m_Offset: {x: 0, y: 0}
+    - _Pattern:
+        m_Texture: {fileID: 2800000, guid: 2b4a9a4e11abe3b458b806ac3f2e8115, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Ramp:
+        m_Texture: {fileID: 2800000, guid: dbaef74d044129b4f81f3a3b924e99ef, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ShadeRamp:
+        m_Texture: {fileID: 2800000, guid: 2910f9806b6852a42a54cd82f8a2889d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _node_2141:
+        m_Texture: {fileID: 2800000, guid: a53cf5449d11a15d1100a04b44295342, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _node_2257:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _node_4338:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _node_4997:
+        m_Texture: {fileID: 2800000, guid: a53cf5449d11a15d1100a04b44295342, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _node_6696:
+        m_Texture: {fileID: 2800000, guid: 2b4a9a4e11abe3b458b806ac3f2e8115, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _node_8037:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _7: 0.432
+    - _Alpha: 0.92
+    - _Alpha_copy: 1
+    - _Cutoff: 0.5
+    - _DisplacementAmount: 0.0934
+    - _DissolveAmount: -0.1
+    - _DotDepth: 0.36
+    - _Gloss: 0.84
+    - _Gloss_copy: 0.95
+    - _Glossiness: 0.5
+    - _Intensity: 0.1
+    - _Metallic: 0
+    - _NormalBlending: 0
+    - _OutlineWidth: 0.01
+    - _ShadeRampOpacity: 1
+    - _ShallowDepth: 2.72
+    - _Specular: 1
+    - _Speed: 0.01
+    - _TextureDisplacement: 0.2
+    - _TextureDisplacementIntensity: 0.1
+    - _TextureDisplacementSpeed: 0.0479
+    - _VertexDisplacement: 80
+    - _VertexDisplacementSpeed: 0.0332
+    - _VertexDisplacementSpeed_copy: 0.07692308
+    - _node_431: 0
+    - _node_4782: 0
+    - _node_6178: 0.95
+    - _node_6941: 1
+    - _node_7814: 10
+    - _node_7964: -0.49
+    - _node_7964_copy: -0.49
+    - _node_8496: 0
+    - _node_8822: 0
+    - _node_9209: 0
+    - _node_9229: 0.005
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Deep: {r: 0, g: 0, b: 0.09803922, a: 1}
+    - _MainColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _PatternColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SecondaryColor: {r: 0.4953189, g: 0, b: 1, a: 1}
+    - _Shallow: {r: 0, g: 1, b: 0.7958136, a: 0}
+    - _Shallow_copy: {r: 1, g: 1, b: 1, a: 1}
+    - _node_587: {r: 1, g: 1, b: 1, a: 1}
+    - _node_587_copy: {r: 0, g: 0, b: 0, a: 1}

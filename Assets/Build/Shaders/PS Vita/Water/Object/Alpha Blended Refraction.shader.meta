@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: eb7401715aabb9f45b50862a3d736a7d
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _MainTextureRGBA: {fileID: 2800000, guid: c8a503acfa6fe5a42b9428adb581ca26, type: 3}
+  - _Noise: {fileID: 2800000, guid: 28c7aad1372ff114b90d330f8a2dd938, type: 3}
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

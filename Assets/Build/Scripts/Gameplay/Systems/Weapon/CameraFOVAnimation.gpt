@@ -1,0 +1,230 @@
+﻿using UnityEngine;
+using DP.Gameplay;
+using DP.StaticDataContainers;
+using DP.Controllers;
+
+#if UNITY_ANDROID
+using ControlFreak2;
+#endif
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
+namespace DP.UI
+{
+/// <summary>
+/// A class that animates the field of view of a camera in response to player actions such as aiming and running.
+/// </summary>
+internal class CameraFOVAnimation : MonoBehaviour
+{
+/// <summary>
+/// The amount by which the field of view will be reduced when the player is aiming.
+/// </summary>
+[SerializeField] [Range(-60, -10)] internal float FOVAimingReduction;
+    /// <summary>
+    /// The speed at which the field of view will change when the player is aiming.
+    /// </summary>
+    [SerializeField] internal float FOVChangeAimingSpeed;
+
+    /// <summary>
+    /// The amount by which the field of view will be expanded when the player is running.
+    /// </summary>
+    [SerializeField] internal float FOVRunningExpansion;
+
+    /// <summary>
+    /// The speed at which the field of view will change when the player is running.
+    /// </summary>
+    [SerializeField] internal float FOVChangeRunningSpeed;
+
+    /// <summary>
+    /// The cameras whose field of view will be animated.
+    /// </summary>
+    Camera[] cameras;
+
+    /// <summary>
+    /// The field of view to use when the player is not aiming or running.
+    /// </summary>
+    float hipFOV;
+
+    /// <summary>
+    /// The field of view to use when the player is aiming.
+    /// </summary>
+    float ADS_FOV;
+
+    /// <summary>
+    /// The field of view to use when the player is running.
+    /// </summary>
+    float runningFOV;
+
+    /// <summary>
+    /// The current field of view.
+    /// </summary>
+    float currentFOV;
+
+    /// <summary>
+    /// Whether the cameras' field of view has moved to the aiming position.
+    /// </summary>
+    bool movedToAim;
+
+    /// <summary>
+    /// Whether the cameras' field of view has moved to the non-aiming, non-running position.
+    /// </summary>
+    bool movedToHip;
+
+    /// <summary>
+    /// Whether the cameras' field of view has moved to the running position.
+    /// </summary>
+    bool movedToRun;
+
+    /// <summary>
+    /// Whether the player was running the previous frame.
+    /// </summary>
+    bool wasRunning;
+
+    /// <summary>
+    /// Whether the player is currently aiming.
+    /// </summary>
+    bool aiming;
+
+    /// <summary>
+    /// Whether the player is currently not aiming and not running.
+    /// </summary>
+    bool hipFire;
+
+    /// <summary>
+    /// Whether the player is currently running.
+    /// </summary>
+    bool running;
+
+    /// <summary>
+    /// The number of cameras being animated.
+    /// </summary>
+    int camerasCount;
+
+    /// <summary>
+    /// Initializes the cameras and the initial field of view values.
+    /// </summary>
+    private void Awake()
+    {
+        cameras = GetComponentsInChildren<Camera>();
+        camerasCount = cameras.Length;
+        for (int i = 0; i < camerasCount; i++)
+        {
+            currentFOV = cameras[i].fieldOfView;
+            hipFOV = currentFOV;
+            ADS_FOV = hipFOV + FOVAimingReduction;
+            runningFOV = hipFOV + FOVRunningExpansion;
+        }
+    }
+
+    /// <summary>
+    /// Sets the aiming flag to true.
+    /// </summary>
+    public void SetAimingTrue() { aiming = true; }
+
+    /// <summary>
+    /// Sets the aiming flag to false.
+    /// </summary>
+    public void SetAimingFalse() { aiming = false; }
+
+    /// <summary>
+    /// Sets the running flag to true.
+    /// </summary>
+    public void SetRunningTrue() { running = true; }
+
+    /// <summary>
+    /// Sets the running flag to false.
+    /// </summary>
+    public void SetRunningFalse() { running = false; }
+
+    private void LateUpdate()
+    {
+        #region Aiming
+        wasRunning = running ? Input.GetButtonDown(PSVitaInputValues.Down) ? true : false : false;
+
+        if (aiming)
+        {
+            running = false;
+            hipFire = false;
+            for (int i = 0; i < camerasCount; i++)
+            {
+                if (cameras[i].fieldOfView != ADS_FOV)
+                {
+                    var aimingFOV = cameras[i].fieldOfView = Mathf.Lerp(cameras[i].fieldOfView, ADS_FOV, FOVChangeAimingSpeed * Time.deltaTime);
+                    currentFOV = aimingFOV;
+                    movedToAim = true;
+                    movedToHip = false;
+                }
+            }
+        }
+        else
+        {
+            if (!running)
+            {
+                hipFire = true;
+                if (!wasRunning)
+                {
+                    for (int i = 0; i < camerasCount; i++)
+                    {
+                        if (cameras[i].fieldOfView != hipFOV)
+                        {
+                            var hipfov = cameras[i].fieldOfView = Mathf.Lerp(cameras[i].fieldOfView, hipFOV, FOVChangeAimingSpeed * Time.deltaTime);
+                            currentFOV = hipfov;
+                            movedToHip = true;
+                            movedToAim = false;
+                            movedToRun = false;
+                        }
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < camerasCount; i++)
+                    {
+                        if (cameras[i].fieldOfView != hipFOV)
+                        {
+                            var hipfov = cameras[i].fieldOfView = Mathf.Lerp(cameras[i].fieldOfView, hipFOV, FOVChangeRunningSpeed * Time.deltaTime);
+currentFOV = hipfov;
+movedToHip = true;
+movedToAim = false;
+movedToRun = false;
+}
+else
+{
+wasRunning = false;
+}
+}
+}
+else
+{
+for (int i = 0; i < camerasCount; i++)
+{
+if (cameras[i].fieldOfView != runningFOV)
+{
+var runningfov = cameras[i].fieldOfView = Mathf.Lerp(cameras[i].fieldOfView, runningFOV, FOVChangeRunningSpeed * Time.deltaTime);
+currentFOV = runningfov;
+movedToRun = true;
+movedToHip = false;
+movedToAim = false;
+}
+}
+}
+#endregion
+}
+}
+}
+
+#if UNITY_EDITOR
+[CustomEditor(typeof(CameraFOVAnimation))]
+public class CameraFOVAnimationEditor : Editor
+{
+public override void OnInspectorGUI()
+{
+var script = target as CameraFOVAnimation;
+script.FOVAimingReduction = EditorGUILayout.Slider("FOV Aiming Reduction:", script.FOVAimingReduction, -60f, -10f);
+script.FOVChangeAimingSpeed = EditorGUILayout.Slider("FOV Change Aiming Speed:", script.FOVChangeAimingSpeed, 0f, 5f);
+script.FOVRunningExpansion = EditorGUILayout.Slider("FOV Running Expansion:", script.FOVRunningExpansion, 0f, 10f);
+script.FOVChangeRunningSpeed = EditorGUILayout.Slider("FOV Change Running Speed:", script.FOVChangeRunningSpeed, 0f, 5f);
+}
+}
+#endif
